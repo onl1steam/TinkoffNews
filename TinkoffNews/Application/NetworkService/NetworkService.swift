@@ -20,7 +20,7 @@ class NetworkService {
         session.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             do {
-                // options []
+                // Load article data
                 let loadedData = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
                 let response = loadedData["response"] as! [String: AnyObject]
                 let json = response["news"]!
@@ -33,8 +33,22 @@ class NetworkService {
         }.resume()
     }
     
-    // TODO: Article get function
-    public func getArticleInfo() {
+    public func getArticleDetails(url: URL, completion: @escaping(Any) -> ()) {
+        let session = URLSession.shared
         
+        session.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                
+                let loadedData = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
+                let json = loadedData["response"] as! [String: AnyObject]
+                DispatchQueue.main.async {
+                    completion(json)
+                }
+            } catch {
+                print(error)
+            }
+            }.resume()
     }
+    
 }

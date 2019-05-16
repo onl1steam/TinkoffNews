@@ -10,10 +10,17 @@ import UIKit
 
 class ArticleDetailsViewController: UIViewController {
     
-    var segueId: String = ""
-    @IBOutlet weak var idLabel: UILabel!
+    var urlSlug: String = ""
+    
+    @IBOutlet weak var articleDetailsView: UITextView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
-        idLabel.text = segueId
+        loadingIndicator.startAnimating()
+        ArticleDetailsNetworkService.getArticleDetails(for: urlSlug) { (response) in
+            self.articleDetailsView.text = response.articleText
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+        }
     }
 }

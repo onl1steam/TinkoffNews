@@ -10,16 +10,16 @@ import Foundation
 
 struct Article {
     
-    var articleId: String
+    var urlSLug: String
     var title: String
     var viewsCount: Int
     var articleText: String
     
     init?(dict: [String: AnyObject]) {
-        guard let articleId = dict["id"] as? String,
+        guard let urlSlug = dict["slug"] as? String,
             let title = dict["title"] as? String else { return nil }
         
-        self.articleId = articleId
+        self.urlSLug = urlSlug
         self.title = title
         self.viewsCount = 0
         self.articleText = ""

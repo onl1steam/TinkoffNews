@@ -20,6 +20,8 @@
 		92023C81228CA49100D0F19A /* GetArticleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C80228CA49100D0F19A /* GetArticleResponse.swift */; };
 		92023C83228CA52900D0F19A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C82228CA52900D0F19A /* NetworkError.swift */; };
 		92023C85228CBFAA00D0F19A /* ArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C84228CBFAA00D0F19A /* ArticleDetailsViewController.swift */; };
+		925E47E5228D3BCB00C74407 /* ArticleDetailsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E47E4228D3BCB00C74407 /* ArticleDetailsNetworkService.swift */; };
+		925E47E8228D3E2600C74407 /* GetArticleDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E47E7228D3E2600C74407 /* GetArticleDetailsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		92023C80228CA49100D0F19A /* GetArticleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArticleResponse.swift; sourceTree = "<group>"; };
 		92023C82228CA52900D0F19A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		92023C84228CBFAA00D0F19A /* ArticleDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsViewController.swift; sourceTree = "<group>"; };
+		925E47E4228D3BCB00C74407 /* ArticleDetailsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsNetworkService.swift; sourceTree = "<group>"; };
+		925E47E7228D3E2600C74407 /* GetArticleDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,7 @@
 				92023C7B228C9D8500D0F19A /* Model */,
 				92023C7A228C9D7800D0F19A /* View */,
 				92023C79228C9D6C00D0F19A /* Controller */,
+				925E47E3228D3B8C00C74407 /* ArticleDetailsNetworkService */,
 			);
 			path = ArticleDetails;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 		92023C7B228C9D8500D0F19A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				925E47E6228D3E0F00C74407 /* Responses */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +218,22 @@
 			isa = PBXGroup;
 			children = (
 				92023C80228CA49100D0F19A /* GetArticleResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		925E47E3228D3B8C00C74407 /* ArticleDetailsNetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				925E47E4228D3BCB00C74407 /* ArticleDetailsNetworkService.swift */,
+			);
+			path = ArticleDetailsNetworkService;
+			sourceTree = "<group>";
+		};
+		925E47E6228D3E0F00C74407 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				925E47E7228D3E2600C74407 /* GetArticleDetailsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -287,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				925E47E8228D3E2600C74407 /* GetArticleDetailsResponse.swift in Sources */,
 				92023C5B228C09D300D0F19A /* TinkoffNews.xcdatamodeld in Sources */,
 				92023C7E228CA42500D0F19A /* ArticleNetworkService.swift in Sources */,
 				92023C55228C09D300D0F19A /* ArticlesViewController.swift in Sources */,
@@ -294,6 +317,7 @@
 				92023C85228CBFAA00D0F19A /* ArticleDetailsViewController.swift in Sources */,
 				92023C73228C0C7400D0F19A /* NetworkService.swift in Sources */,
 				92023C75228C921300D0F19A /* ArticleCell.swift in Sources */,
+				925E47E5228D3BCB00C74407 /* ArticleDetailsNetworkService.swift in Sources */,
 				92023C83228CA52900D0F19A /* NetworkError.swift in Sources */,
 				92023C81228CA49100D0F19A /* GetArticleResponse.swift in Sources */,
 				92023C53228C09D300D0F19A /* AppDelegate.swift in Sources */,
@@ -373,7 +397,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -428,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

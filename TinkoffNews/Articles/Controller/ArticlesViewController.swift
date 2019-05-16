@@ -17,7 +17,7 @@ class ArticlesViewController: UITableViewController {
     
     private var isLoading: Bool = false
     
-    private var segueId: String = ""
+    private var urlSlug: String = ""
     
     override func viewDidLoad() {
         // Add Refresh Control
@@ -29,8 +29,8 @@ class ArticlesViewController: UITableViewController {
         pageOffset = 0
         ArticleNetworkService.getArticles(from: pageOffset, pageSize: pageSize) { (response) in
             self.articles = response.articles
-            self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
         }
         print("Refreshing")
     }
@@ -49,12 +49,13 @@ class ArticlesViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowArticleDetails" {
             if let destinationVC = segue.destination as? ArticleDetailsViewController {
-                destinationVC.segueId = "id is \(segueId)"
+                destinationVC.urlSlug = String(urlSlug)
             }
         }
     }
     
     // TableView methods
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ArticleCell
         let article = articles[indexPath.row]
@@ -73,11 +74,10 @@ class ArticlesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        segueId = articles[indexPath.row].articleId
+        urlSlug = articles[indexPath.row].urlSLug
         
         articles[indexPath.row].viewsCount += 1
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
-        
         
         performSegue(withIdentifier: "ShowArticleDetails", sender: self)
     }
