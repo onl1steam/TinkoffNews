@@ -17,11 +17,11 @@
 		92023C75228C921300D0F19A /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C74228C921300D0F19A /* ArticleCell.swift */; };
 		92023C77228C947A00D0F19A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C76228C947A00D0F19A /* Article.swift */; };
 		92023C7E228CA42500D0F19A /* ArticleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C7D228CA42500D0F19A /* ArticleNetworkService.swift */; };
-		92023C81228CA49100D0F19A /* GetArticleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C80228CA49100D0F19A /* GetArticleResponse.swift */; };
 		92023C83228CA52900D0F19A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C82228CA52900D0F19A /* NetworkError.swift */; };
 		92023C85228CBFAA00D0F19A /* ArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C84228CBFAA00D0F19A /* ArticleDetailsViewController.swift */; };
 		925E47E5228D3BCB00C74407 /* ArticleDetailsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E47E4228D3BCB00C74407 /* ArticleDetailsNetworkService.swift */; };
 		925E47E8228D3E2600C74407 /* GetArticleDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E47E7228D3E2600C74407 /* GetArticleDetailsResponse.swift */; };
+		92D96641228F36FA003F9840 /* GetArticleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D96640228F36FA003F9840 /* GetArticleResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,11 +37,11 @@
 		92023C74228C921300D0F19A /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		92023C76228C947A00D0F19A /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		92023C7D228CA42500D0F19A /* ArticleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleNetworkService.swift; sourceTree = "<group>"; };
-		92023C80228CA49100D0F19A /* GetArticleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArticleResponse.swift; sourceTree = "<group>"; };
 		92023C82228CA52900D0F19A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		92023C84228CBFAA00D0F19A /* ArticleDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsViewController.swift; sourceTree = "<group>"; };
 		925E47E4228D3BCB00C74407 /* ArticleDetailsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsNetworkService.swift; sourceTree = "<group>"; };
 		925E47E7228D3E2600C74407 /* GetArticleDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsResponse.swift; sourceTree = "<group>"; };
+		92D96640228F36FA003F9840 /* GetArticleResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,7 +217,7 @@
 		92023C7F228CA47B00D0F19A /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				92023C80228CA49100D0F19A /* GetArticleResponse.swift */,
+				92D96640228F36FA003F9840 /* GetArticleResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -315,11 +315,11 @@
 				92023C55228C09D300D0F19A /* ArticlesViewController.swift in Sources */,
 				92023C77228C947A00D0F19A /* Article.swift in Sources */,
 				92023C85228CBFAA00D0F19A /* ArticleDetailsViewController.swift in Sources */,
+				92D96641228F36FA003F9840 /* GetArticleResponse.swift in Sources */,
 				92023C73228C0C7400D0F19A /* NetworkService.swift in Sources */,
 				92023C75228C921300D0F19A /* ArticleCell.swift in Sources */,
 				925E47E5228D3BCB00C74407 /* ArticleDetailsNetworkService.swift in Sources */,
 				92023C83228CA52900D0F19A /* NetworkError.swift in Sources */,
-				92023C81228CA49100D0F19A /* GetArticleResponse.swift in Sources */,
 				92023C53228C09D300D0F19A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

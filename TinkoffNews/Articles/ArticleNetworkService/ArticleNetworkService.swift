@@ -11,16 +11,20 @@ import Foundation
 class ArticleNetworkService {
     private init() {}
     
-    static func getArticles(from pageOffset: Int, pageSize: Int, completion: @escaping (GetArticleResponse) -> ()) {
+    static func getArticles(from pageOffset: Int, pageSize: Int, completion: @escaping (Any) -> ()) {
         guard let url = URL(string: "https://cfg.tinkoff.ru/news/public/api/platform/v1/getArticles?pageSize=\(pageSize)&pageOffset=\(pageOffset)") else { return }
         
-        NetworkService.shared.getArticles(url: url) { (json) in
+        
+        NetworkService.shared.getArticles(url: url) { (response) in
             do {
-                let response = try GetArticleResponse(json: json)
+                let response = try GetArticleResponse(json: response)
                 completion(response)
             } catch {
                 print(error)
+                completion(error)
             }
         }
     }
+    
 }
+

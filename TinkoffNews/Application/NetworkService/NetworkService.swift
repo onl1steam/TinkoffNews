@@ -18,7 +18,14 @@ class NetworkService {
         let session = URLSession.shared
         
         session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+            }
+            
             guard let data = data else { return }
+            
             do {
                 // Load article data
                 let loadedData = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
@@ -29,6 +36,9 @@ class NetworkService {
                 }
             } catch {
                 print(error)
+                DispatchQueue.main.async {
+                    completion(error)
+                }
             }
         }.resume()
     }
