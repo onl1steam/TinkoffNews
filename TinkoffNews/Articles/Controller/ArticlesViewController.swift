@@ -25,7 +25,6 @@ class ArticlesViewController: UITableViewController {
         // Добавление жеста pull-to-refresh
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
-        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {

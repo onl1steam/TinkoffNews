@@ -37,9 +37,6 @@ class CoreDataManager {
                 item.viewsCount = article.viewsCount
             }
         }
-        if let articleObject = findArticleBySlug(urlSlug: article.urlSlug) {
-            articleObject.setValue(article.viewsCount, forKey: "viewsCount")
-        }
     }
     
     // Загрузка количества просмотров из БД
@@ -87,12 +84,12 @@ class CoreDataManager {
                 article.articleText = articleText
             }
         }
-        CoreDataManager.shared.saveArticles()
     }
     
     // Загрузка данных из бд
     func fetchData() -> [Article] {
         let fetchRequest: NSFetchRequest<Articles> = Articles.fetchRequest()
+        var articles = [Article]()
 
         do {
             let data = try context.fetch(fetchRequest)
@@ -101,6 +98,7 @@ class CoreDataManager {
                     articles.append(article)
                 }
             }
+            self.articles = articles
         } catch {
             print(error.localizedDescription)
         }
