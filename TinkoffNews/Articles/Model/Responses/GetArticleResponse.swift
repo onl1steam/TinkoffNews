@@ -14,7 +14,7 @@ struct GetArticleResponse {
     
     init(json: Any) throws {
         // Сериализация JSON формата
-        guard let array = json as? [JSON] else { throw NetworkError.noInternetConnection }
+        guard let array = json as? [JSON] else { throw NetworkError.errorWhileParsing }
         
         var articles = [Article]()
         for dictionary in array {

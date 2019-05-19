@@ -117,8 +117,8 @@ class ArticlesViewController: UITableViewController {
         urlSlug = articles[indexPath.row].urlSlug
         
         articles[indexPath.row].increaseViewsCount()
-        performSegue(withIdentifier: "ShowArticleDetails", sender: self)
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        performSegue(withIdentifier: "ShowArticleDetails", sender: self)
     }
 
 }

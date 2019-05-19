@@ -37,7 +37,9 @@ class CoreDataManager {
                 item.viewsCount = article.viewsCount
             }
         }
-        CoreDataManager.shared.saveArticles()
+        if let articleObject = findArticleBySlug(urlSlug: article.urlSlug) {
+            articleObject.setValue(article.viewsCount, forKey: "viewsCount")
+        }
     }
     
     // Загрузка количества просмотров из БД
