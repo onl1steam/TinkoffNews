@@ -17,6 +17,7 @@ class ArticlesViewController: UITableViewController {
     private let pageSize = 20
     
     private var isLoading: Bool = false
+    private var isLoadedFromInternet = false
     
     private var urlSlug: String = ""
     
@@ -24,9 +25,14 @@ class ArticlesViewController: UITableViewController {
         // Добавление жеста pull-to-refresh
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
+        tableView.reloadData()
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        // Загрузка из БД
+        articles = CoreDataManager.shared.fetchData()
+        tableView.reloadData()
+    }
     
     // Обновление данных
     @objc func refresh(_: AnyObject) {
@@ -39,17 +45,24 @@ class ArticlesViewController: UITableViewController {
             self.articles = (response as? GetArticleResponse)?.articles ?? [Article]()
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
-            self.saveArticle()
+            self.isLoadedFromInternet = true
+            CoreDataManager.shared.updateArticleViewsCountFromDB(for: &self.articles)
+            CoreDataManager.shared.deliverArticles(articles: self.articles)
         }
     }
     
+    // Загрузка пагинированных данных
     private func loadArticles() {
         pageOffset += pageSize
         ArticleNetworkService.getArticles(from: pageOffset, pageSize: pageSize) { (response) in
-            if let _ = response as? NetworkError {
+            // Если не загружаем данные и выбрасываем ошибку
+            if let error = response as? NetworkError {
+                self.showErrorAlert(error: error)
                 return
             }
             self.articles += (response as? GetArticleResponse)?.articles ?? [Article]()
+            CoreDataManager.shared.updateArticleViewsCountFromDB(for: &self.articles)
+            CoreDataManager.shared.deliverArticles(articles: self.articles)
             self.tableView.reloadData()
         }
         isLoading = false
@@ -63,8 +76,8 @@ class ArticlesViewController: UITableViewController {
             }
         }
     }
-   
     
+    // Вывод сообщения об ошибке
     private func showErrorAlert(error: NetworkError) {
         let (title, message) = NetworkError.getErrorDescription(error)
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -79,31 +92,6 @@ class ArticlesViewController: UITableViewController {
         return
     }
     
-    // Сохранение в БД
-    
-    func saveArticle() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Articles", in: context)
-        let articleObject = NSManagedObject(entity: entity!, insertInto: context) as! Articles
-        articles.forEach { (article) in
-            articleObject.articleText = article.articleText
-            articleObject.urlSlug = article.urlSLug
-            articleObject.viewsCount = Int32(article.viewsCount)
-            articleObject.title = article.title
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        
-        
-    }
-    
-    
-    
     // Методы TableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,9 +99,11 @@ class ArticlesViewController: UITableViewController {
         let article = articles[indexPath.row]
         cell.configure(with: article)
         if indexPath.row == articles.count - 1 {
-            if(!isLoading) {
-                isLoading = true
-                loadArticles()
+            if(isLoadedFromInternet) {
+                if(!isLoading) {
+                    isLoading = true
+                    loadArticles()
+                }
             }
         }
         return cell
@@ -124,12 +114,11 @@ class ArticlesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        urlSlug = articles[indexPath.row].urlSLug
+        urlSlug = articles[indexPath.row].urlSlug
         
-        articles[indexPath.row].viewsCount += 1
-        self.tableView.reloadRows(at: [indexPath], with: .automatic)
-        
+        articles[indexPath.row].increaseViewsCount()
         performSegue(withIdentifier: "ShowArticleDetails", sender: self)
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
 }

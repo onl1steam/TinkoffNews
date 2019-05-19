@@ -14,6 +14,7 @@ class NetworkService {
     
     static let shared = NetworkService()
     
+    // Загрузка статей с сервера
     public func getArticles(url: URL, completion: @escaping(Any) -> ()) {
         let session = URLSession.shared
         
@@ -23,14 +24,13 @@ class NetworkService {
                     completion(error)
                 }
             }
-            
             guard let data = data else { return }
             
             do {
                 // Load article data
-                let loadedData = try JSONSerialization.jsonObject(with: data, options: []) as! [String: AnyObject]
-                let response = loadedData["response"] as! [String: AnyObject]
-                let json = response["news"]!
+                guard let loadedData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject],
+                    let response = loadedData["response"] as? [String: AnyObject],
+                    let json = response["news"] else { throw NetworkError.errorWhileParsing }
                 DispatchQueue.main.async {
                     completion(json)
                 }
@@ -43,6 +43,7 @@ class NetworkService {
         }.resume()
     }
     
+    // Загрузка текста статьи с сервера
     public func getArticleDetails(url: URL, completion: @escaping(Any) -> ()) {
         let session = URLSession.shared
         

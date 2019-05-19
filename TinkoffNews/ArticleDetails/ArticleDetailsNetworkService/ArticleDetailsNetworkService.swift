@@ -12,6 +12,7 @@ class ArticleDetailsNetworkService {
     
     private init() {}
     
+    // Загрузка текста статьи с сервера
     static func getArticleDetails(for urlSlug: String, completion: @escaping (GetArticleDetailsResponse) -> ()) {
         guard let url = URL(string: "https://cfg.tinkoff.ru/news/public/api/platform/v1/getArticle?urlSlug=\(urlSlug)") else { return }
         

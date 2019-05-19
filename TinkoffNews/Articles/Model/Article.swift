@@ -7,22 +7,39 @@
 //
 
 import Foundation
+import CoreData
 
-struct Article {
+class Article {
     
-    var urlSLug: String
-    var title: String
-    var viewsCount: Int
-    var articleText: String
+    var urlSlug: String = ""
+    var title: String = ""
+    var viewsCount: Int = 0
+    var articleText: String = ""
     
+    // Инициализация при получении записей с сервера
     init?(dict: [String: AnyObject]) {
         guard let urlSlug = dict["slug"] as? String,
             let title = dict["title"] as? String else { return nil }
         
-        self.urlSLug = urlSlug
+        self.urlSlug = urlSlug
         self.title = title
-        self.viewsCount = 0
-        self.articleText = ""
     }
     
+    // Инициализация при получении записей из бд
+    init?(article: Articles) {
+        guard let urlSlug = article.urlSlug,
+            let title = article.title,
+            let articleText = article.articleText else {return nil}
+        let viewsCount = article.viewsCount
+        
+        self.urlSlug = urlSlug
+        self.articleText = articleText
+        self.title = title
+        self.viewsCount = Int(viewsCount)
+    }
+    
+    func increaseViewsCount() {
+        self.viewsCount += 1
+        CoreDataManager.shared.updateArticleViewsCount(at: self)
+    }
 }

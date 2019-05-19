@@ -21,6 +21,7 @@
 		92023C85228CBFAA00D0F19A /* ArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92023C84228CBFAA00D0F19A /* ArticleDetailsViewController.swift */; };
 		925E47E5228D3BCB00C74407 /* ArticleDetailsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E47E4228D3BCB00C74407 /* ArticleDetailsNetworkService.swift */; };
 		925E47E8228D3E2600C74407 /* GetArticleDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925E47E7228D3E2600C74407 /* GetArticleDetailsResponse.swift */; };
+		92C4EDBA22906A3D0080FE2D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C4EDB922906A3D0080FE2D /* CoreDataManager.swift */; };
 		92D96641228F36FA003F9840 /* GetArticleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D96640228F36FA003F9840 /* GetArticleResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		92023C84228CBFAA00D0F19A /* ArticleDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsViewController.swift; sourceTree = "<group>"; };
 		925E47E4228D3BCB00C74407 /* ArticleDetailsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsNetworkService.swift; sourceTree = "<group>"; };
 		925E47E7228D3E2600C74407 /* GetArticleDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArticleDetailsResponse.swift; sourceTree = "<group>"; };
+		92C4EDB922906A3D0080FE2D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		92D96640228F36FA003F9840 /* GetArticleResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetArticleResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				92023C82228CA52900D0F19A /* NetworkError.swift */,
+				92C4EDB922906A3D0080FE2D /* CoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				92023C77228C947A00D0F19A /* Article.swift in Sources */,
 				92023C85228CBFAA00D0F19A /* ArticleDetailsViewController.swift in Sources */,
 				92D96641228F36FA003F9840 /* GetArticleResponse.swift in Sources */,
+				92C4EDBA22906A3D0080FE2D /* CoreDataManager.swift in Sources */,
 				92023C73228C0C7400D0F19A /* NetworkService.swift in Sources */,
 				92023C75228C921300D0F19A /* ArticleCell.swift in Sources */,
 				925E47E5228D3BCB00C74407 /* ArticleDetailsNetworkService.swift in Sources */,

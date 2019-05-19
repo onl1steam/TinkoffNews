@@ -13,7 +13,7 @@ struct GetArticleDetailsResponse {
     let articleText: String
     
     init(json: Any) throws {
-        // JSON serialization
+        // Сериализация JSON формата
         guard let array = json as? JSON else { throw NetworkError.noInternetConnection }
         
         let articleText = array["text"] as! String

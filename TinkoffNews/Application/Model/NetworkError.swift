@@ -8,16 +8,17 @@
 
 import UIKit
 
+// Обработка ошибок
 enum NetworkError: Error {
     case noInternetConnection
-    case someErrorOccured
+    case errorWhileParsing
     
     static func getErrorDescription(_ error: NetworkError) -> (String, String) {
         switch error {
         case .noInternetConnection:
             return ("Ошибка сети", "Потеряно соединение с Интернет, проверьте подключение к сети и попробуйте еще раз.")
-        case .someErrorOccured:
-            return ("Ошибка", "Неизвестная ошибка, попробуйте загрузить данные позже.")
+        case .errorWhileParsing:
+            return ("Ошибка сети", "Ошибка полученных данных. Попробуйте еще раз.")
         }
     }
 }
